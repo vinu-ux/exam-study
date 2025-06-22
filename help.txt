@@ -1,0 +1,2 @@
+npx angular-cli-ghpages --dir=dist/app-build --no-silent
+ng build --configuration production --base-href "/exam-study/"
