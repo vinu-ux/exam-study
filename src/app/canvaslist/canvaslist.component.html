@@ -1,0 +1,50 @@
+<div class="page-wrapper">
+  <!-- BEGIN PAGE HEADER -->
+  <div class="page-header d-print-none" aria-label="Page header">
+    <div class="container-xl">
+      <div class="row g-2 align-items-center">
+        <div class="col">
+          <h2 class="page-title">Canvas</h2>
+          <div class="text-secondary mt-1"></div>
+        </div>
+        <!-- Page title actions -->
+        <div class="col-auto ms-auto d-print-none">
+          <div class="d-flex">
+            <a class="btn btn-primary btn-3" [routerLink]="['/canvas']">
+              New Canvas
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=" page-body">
+    <div class="container-xl">
+      <div class="row row-cards">
+        <ng-container *ngIf="canvases?.length; else noData">
+          <div class="col-md-6 col-lg-3 mb-4" *ngFor="let canvas of canvases">
+            <div class="card-body p-4 text-center">
+              <span class="avatar avatar-xl mb-3"
+                [ngStyle]="{'background-image': canvas.image ? 'url(' + canvas.image + ')' : 'url(./static/avatars/000m.jpg)'}">
+              </span>
+              <h3 class="m-0 mb-1">
+                <a [routerLink]="['/canvas', canvas.id]">{{ canvas.name || 'Untitled Canvas' }}</a>
+              </h3>
+              <div class="text-secondary">{{ canvas.created_at | date : 'short' }}</div>
+            </div>
+            <div class="d-flex justify-content-center mb-3">
+              <a [routerLink]="['/canvas', canvas.id]" class="btn btn-primary me-2">Edit</a>
+              <a (click)="deleteCanvas(canvas.id)" class="btn btn-primary me-2">Delete</a>
+              <!-- Add more actions if needed -->
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <ng-template #noData>
+        <div class="col-12 text-center text-muted py-5">
+          No canvases found.
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

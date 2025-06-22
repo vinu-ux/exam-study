@@ -1,0 +1,14 @@
+@media (max-width: 600px) {
+  .marker-popup,
+  .marker-tooltip {
+    min-width: 90vw !important;
+    left: 5vw !important;
+    right: 5vw !important;
+    top: 10vw !important;
+    transform: none !important;
+    z-index: 1000;
+  }
+  .card {
+    font-size: 1rem;
+  }
+}
